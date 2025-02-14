@@ -1,0 +1,12 @@
+[package]
+name = "nature_remo_api"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "nature_remo_api"
+crate-type = ["cdylib"]
+
+[dependencies]
+pyo3 = "0.23.3"
+nature_remo_api_raw = {path = "../nature_remo_api_raw"}

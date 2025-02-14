@@ -45,8 +45,17 @@ dependencies = [
 name = "nature_remo_api"
 version = "0.1.0"
 dependencies = [
+ "nature_remo_api_raw",
  "pyo3",
 ]
+
+[[package]]
+name = "nature_remo_api_machine"
+version = "0.1.0"
+
+[[package]]
+name = "nature_remo_api_raw"
+version = "0.1.0"
 
 [[package]]
 name = "once_cell"

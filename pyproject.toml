@@ -11,5 +11,17 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dynamic = ["version"]
+
 [tool.maturin]
+module-name = "nature_remo_api._rust_api"
+#profile = "develop"
 features = ["pyo3/extension-module"]
+#features = ["pyo3/extension-module","state_machine"]
+manifest-path = "rust/nature_remo_api/Cargo.toml" # この行を追加
+
+
+[dependency-groups]
+dev = [
+    "maturin-import-hook>=0.1.0",
+    "pip>=25.0.1",
+]
