@@ -1,0 +1,29 @@
+[package]
+name = "nature_remo_api_client"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "nature_remo_api_cli"
+path = "../../bin/cli.rs"
+
+[features]
+default = ["env_logger"]
+debug = ["color-eyre", "env_logger"]
+clippy = ["env_logger", "color-eyre"]
+
+[dependencies]
+nature_remo_api = { path = "../nature_remo_api", features = ["serde"] }
+async-backtrace = { version = "0.2" }
+dotenvy = { version = "0.15" }
+eyre = { workspace = true }
+tokio = { workspace = true, features = ["rt", "rt-multi-thread", "macros"] }
+http = { workspace = true }
+reqwest = { version = "0.12", features = ["json"] }
+serde = { workspace = true }
+serde_json = { workspace = true }
+log = { workspace = true }
+thiserror = { workspace = true }
+# Debug
+color-eyre = { version = "0.6", optional = true }
+env_logger = { version = "0.11", optional = true, features = ["color"] }

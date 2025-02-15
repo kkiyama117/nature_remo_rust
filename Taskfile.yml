@@ -18,15 +18,41 @@ tasks:
     cmds:
       - task: test_rs
       - task: test_py
-  # Rust
+  format:
+    cmds:
+      - task: format_rs
+      - task: format_py
+  # Rust ===================================================================-
   test_rs:
     cmds:
       - cargo test
-  # Python and Maturin
+  format_rs:
+    cmds:
+      - cargo clippy --workspace --exclude nature_remo_api_client --fix --allow-dirty --allow-staged
+      - cargo clippy --workspace --exclude nature_remo_api_client --fix --allow-dirty --allow-staged --features="clippy"
+      - cargo fmt --all
+  format_rs_cli:
+    cmds:
+      - cargo clippy --workspace --exclude nature_remo_api --fix --allow-dirty --allow-staged --all-features --verbose
+  run_rs:
+    cmds:
+      - RUST_LOG=info cargo run
+  run_rs_debug:
+    cmds:
+      - RUST_LOG=debug cargo run --features "debug"
+  # Python and Maturin =====================================================-
   sync:
     cmds:
+      - uv sync --all-extras
       - uv run maturin develop
-      - uv sync
+      #      - uv run maturin build --release
   test_py:
     cmds:
       - uv run pytest
+  format_py:
+    cmds:
+      - uv run ruff format ./python
+  run_py:
+    cmds:
+      - task: sync
+      - uv run python ./bin/cli.py

@@ -10,6 +10,7 @@ dynamic = ["version"]
 readme = "README.md"
 dependencies = [
     "aiohttp>=3.10.11",
+    "requests>=2.32.3",
 ]
 
 [build-system]
@@ -18,23 +19,23 @@ build-backend = "maturin"
 
 [dependency-groups]
 dev = [
-    "maturin>=1.8.2",
+    # "maturin>=1.8.2",
+    "maturin @ git+https://github.com/PyO3/maturin.git",
     "maturin-import-hook>=0.1.0",
-    "nature_remo_api>=0.1.0",
+    "patchelf>=0.17.2.1",
     "pip>=25.0.1",
     "pytest>=8.3.4",
+    "ruff>=0.9.6",
+    "typing-extensions>=4.12.2",
 ]
 
 [tool.maturin]
 module-name = "nature_remo_api._rust_api"
 python-source = "python"
 profile = "dev"
-features = ["pyo3/extension-module", "python"]
-#features = ["pyo3/extension-module","state_machine"]
-manifest-path = "rust/nature_remo_api/Cargo.toml" # この行を追加
+features = ["pyo3/extension-module"]
+manifest-path = "rust/nature_remo_api/Cargo.toml"
 
 [tool.pytest.ini_options]
 addopts = "-s"
-testpaths = [
-    "python/tests",
-]
+testpaths = ["python/tests"]
