@@ -1,5 +1,7 @@
 [workspace]
-members = ["rust/*"]
+members = ["rust/nature_remo_api", "rust/nature_remo_api_raw", "rust/nature_remo_api_machine"]
+resolver = "3"
+#members = ["rust/*"]
 
 [workspace.package]
 version = "0.1.0"

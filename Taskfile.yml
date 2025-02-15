@@ -1,0 +1,32 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - task sync
+    silent: true
+  init:
+    cmds:
+      - uv sync
+      - cargo test
+  test:
+    cmds:
+      - task: test_rs
+      - task: test_py
+  # Rust
+  test_rs:
+    cmds:
+      - cargo test
+  # Python and Maturin
+  sync:
+    cmds:
+      - uv run maturin develop
+      - uv sync
+  test_py:
+    cmds:
+      - uv run pytest

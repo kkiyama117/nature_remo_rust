@@ -1,6 +1,12 @@
 [package]
 name = "nature_remo_api_machine"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
+
+[features]
+default=[]
+use-hyper = ["hyper"]
 
 [dependencies]
+nature_remo_api_raw={path = "../nature_remo_api_raw"}
+hyper = {version = "1.6",optional = true}

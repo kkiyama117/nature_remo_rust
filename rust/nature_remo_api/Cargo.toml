@@ -1,12 +1,20 @@
 [package]
 name = "nature_remo_api"
-version = "0.1.0"
-edition = "2024"
+version.workspace = true
+edition.workspace = true
 
 [lib]
 name = "nature_remo_api"
 crate-type = ["cdylib"]
 
+[features]
+default = ["serde"]
+python = ["pyo3", "pyo3-log", "serde"]
+
 [dependencies]
-pyo3 = "0.23.3"
-nature_remo_api_raw = {path = "../nature_remo_api_raw"}
+chrono = { version = "0.4", features = ["serde"] }
+serde = { version = "1.0", optional = true, features = ["derive"] }
+pyo3 = { version = "0.23.3", optional = true, features = ["extension-module", "chrono", "serde"] }
+pyo3-log = { version = "0.12.1", optional = true }
+nature_remo_api_raw = { path = "../nature_remo_api_raw" }
+log = "0.4.25"

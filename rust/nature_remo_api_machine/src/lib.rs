@@ -1,10 +1,6 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
-
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use nature_remo_api_raw::add;
 
     #[test]
     fn it_works() {
