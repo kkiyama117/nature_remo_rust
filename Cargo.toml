@@ -1,9 +1,18 @@
 [workspace]
-members = ["rust/nature_remo_api", "rust/nature_remo_api_raw", "rust/nature_remo_api_machine"]
+members = ["rust/nature_remo_api", "rust/nature_remo_api_client"]
 resolver = "3"
 #members = ["rust/*"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.4"
 edition = "2024"
 
+[workspace.dependencies]
+chrono = { version = "0.4.40", features = ["serde"] }
+eyre = { version = "0.6.12" }
+log = "0.4.26"
+serde = { version = "1.0.218", features = ["derive"] }
+serde_json = { version = "1.0.140" }
+tokio = "1.44.0"
+http = "1.2.0"
+thiserror = "2.0.12"

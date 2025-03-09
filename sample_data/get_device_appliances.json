@@ -1,0 +1,24 @@
+[
+  {
+    "aircon": null,
+    "device": {
+      "bt_mac_address": "aa:bb:cc:dd:35:ff",
+      "created_at": "2021-12-05T09:15:59Z",
+      "firmware_version": "Remo-mini/1.14.8",
+      "humidity_offset": 0,
+      "id": "aaaabbbb-cd23-efgh-i123-aabbccddeeff",
+      "mac_address": "aa:bb:cc:dd:35:ff",
+      "name": "main",
+      "serial_number": "2W000000000000",
+      "temperature_offset": 0,
+      "updated_at": "2025-02-18T03:53:06Z"
+    },
+    "id": "aaaabbbb-cd23-efgh-i123-aabbccddeeff",
+    "image": "ico_ac_1",
+    "model": null,
+    "nickname": "エアコン",
+    "settings": null,
+    "signals": [],
+    "type": "AC"
+  }
+]

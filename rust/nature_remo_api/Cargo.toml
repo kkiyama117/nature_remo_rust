@@ -5,16 +5,45 @@ edition.workspace = true
 
 [lib]
 name = "nature_remo_api"
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
+proc-macro = true
 
 [features]
 default = ["serde"]
-python = ["pyo3", "pyo3-log", "serde"]
+serde = ["dep:serde", "serde_json", "http-serde", "chrono/serde"]
+pyo3 = ["serde", "tokio", "dep:pyo3", "pyo3-log", "pyo3-async-runtimes", "pythonize"]
+#pyo3 = ["serde", "dep:pyo3", "pyo3-log", "pyo3-async-runtimes", "pythonize"]
+full = ["serde", "pyo3"]
+
+# For Clippy lint
+clippy = ["full"]
 
 [dependencies]
-chrono = { version = "0.4", features = ["serde"] }
-serde = { version = "1.0", optional = true, features = ["derive"] }
-pyo3 = { version = "0.23.3", optional = true, features = ["extension-module", "chrono", "serde"] }
-pyo3-log = { version = "0.12.1", optional = true }
-nature_remo_api_raw = { path = "../nature_remo_api_raw" }
-log = "0.4.25"
+chrono = { workspace = true }
+eyre = { workspace = true }
+http = { workspace = true }
+log = { workspace = true }
+thiserror = { workspace = true }
+
+# Optional dependencies
+# serde
+serde = { workspace = true, optional = true, features = ["derive"] }
+serde_json = { workspace = true, optional = true }
+http-serde = { version = "2.1", optional = true }
+# pyo3
+tokio = { workspace = true, optional = true, features = ["default"] }
+pyo3 = { version = "0.23.5", optional = true, features = [
+    "eyre",
+    "extension-module",
+    "chrono",
+    "serde",
+    "experimental-inspect",
+    "auto-initialize",
+    "nightly",
+] }
+pythonize = { version = "0.23", optional = true }
+pyo3-log = { version = "0.12", optional = true }
+pyo3-async-runtimes = { version = "0.23", optional = true, features = [
+    #"attributes",
+    "tokio-runtime",
+] }

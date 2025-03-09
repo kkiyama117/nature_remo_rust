@@ -1,0 +1,188 @@
+[
+  {
+    "aircon": {
+      "range": {
+        "extras": [
+          {
+            "availability": "hidden",
+            "description": "Power Saving Mode",
+            "id": "eco",
+            "options": [
+              {
+                "default": true,
+                "text": "Off",
+                "value": "off"
+              },
+              {
+                "text": "On",
+                "value": "on"
+              }
+            ],
+            "text": "Eco",
+            "type": "choice"
+          },
+          {
+            "availability": "available",
+            "description": "Automatically performs internal drying operation to prevent mold.",
+            "id": "autoclean",
+            "options": [
+              {
+                "default": true,
+                "text": "Off",
+                "value": "off"
+              },
+              {
+                "text": "On",
+                "value": "on"
+              }
+            ],
+            "text": "Mold Proof",
+            "type": "choice"
+          }
+        ],
+        "fixedButtons": [
+          "power-off"
+        ],
+        "modes": {
+          "cool": {
+            "dir": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "auto",
+              "swing"
+            ],
+            "dirh": [
+              ""
+            ],
+            "temp": [
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29"
+            ],
+            "vol": [
+              "1",
+              "2",
+              "3",
+              "auto"
+            ]
+          },
+          "dry": {
+            "dir": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "auto",
+              "swing"
+            ],
+            "dirh": [
+              ""
+            ],
+            "temp": [
+              ""
+            ],
+            "vol": [
+              "1",
+              "2",
+              "3",
+              "auto"
+            ]
+          },
+          "warm": {
+            "dir": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "auto",
+              "swing"
+            ],
+            "dirh": [
+              ""
+            ],
+            "temp": [
+              "16",
+              "17",
+              "18",
+              "19",
+              "20",
+              "21",
+              "22",
+              "23",
+              "24",
+              "25",
+              "26",
+              "27",
+              "28",
+              "29",
+              "30",
+              "31"
+            ],
+            "vol": [
+              "1",
+              "2",
+              "3",
+              "auto"
+            ]
+          }
+        }
+      },
+      "tempUnit": "c"
+    },
+    "device": {
+      "bt_mac_address": "aa:bb:cc:dd:35:ff",
+      "created_at": "2021-12-05T09:15:59Z",
+      "firmware_version": "Remo-mini/1.14.8",
+      "humidity_offset": 0.2,
+      "id": "aaaabbbb-cd23-efgh-i123-aabbccddeeff",
+      "mac_address": "aa:bb:cc:dd:35:ff",
+      "name": "main",
+      "serial_number": "2W000000000000",
+      "temperature_offset": 0.1,
+      "updated_at": "2025-02-18T03:53:06Z"
+    },
+    "id": "aaaabbbb-cd23-efgh-i123-aabbccddeeff",
+    "image": "ico_ac_1",
+    "model": {
+      "country": "JP",
+      "id": "aaaabbbb-cd23-efgh-i123-aabbccddeeff",
+      "image": "ico_ac_1",
+      "manufacturer": "Mitsubishi",
+      "name": "Mitsubishi AC 011",
+      "remote_name": "lg31",
+      "series": ""
+    },
+    "nickname": "エアコン",
+    "settings": {
+      "button": "",
+      "dir": "4",
+      "dirh": "",
+      "extra": {
+        "autoclean": "on"
+      },
+      "mode": "warm",
+      "temp": "23",
+      "temp_unit": "c",
+      "updated_at": "2025-02-22T08:58:23Z",
+      "vol": "1"
+    },
+    "signals": [],
+    "type": "AC"
+  }
+]
