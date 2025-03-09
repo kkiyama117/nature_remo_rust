@@ -19,8 +19,7 @@ build-backend = "maturin"
 
 [dependency-groups]
 dev = [
-    # "maturin>=1.8.2",
-    "maturin @ git+https://github.com/PyO3/maturin.git",
+    # "maturin @ git+https://github.com/PyO3/maturin.git",
     "maturin-import-hook>=0.1.0",
     "patchelf>=0.17.2.1",
     "pip>=25.0.1",
@@ -32,7 +31,7 @@ dev = [
 [tool.maturin]
 module-name = "nature_remo_api._rust_api"
 python-source = "python"
-profile = "dev"
+#profile = "dev"
 features = ["pyo3/extension-module"]
 manifest-path = "rust/nature_remo_api/Cargo.toml"
 

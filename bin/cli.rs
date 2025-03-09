@@ -26,6 +26,7 @@ async fn main() -> Result<()> {
     let devices = client.get_devices().await?;
     let device = devices.iter().next().unwrap();
     log::info!("{:?}", devices);
+    log::info!("{:?}", device);
     log::info!("==-==================");
     let appliances = client.get_appliances().await?;
     // log::info!("{:#?}", appliances);
