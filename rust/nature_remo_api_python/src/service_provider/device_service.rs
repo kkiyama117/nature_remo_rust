@@ -1,14 +1,15 @@
 #![allow(dead_code)]
 
-use super::*;
-use crate::domain::params::UpdateDeviceParameters;
+use nature_remo_api::domain::params::UpdateDeviceParameters;
+use nature_remo_api::service_provider::{self as normal, PyNatureRemoRequest};
+use pyo3::prelude::*;
 
 #[pyfunction]
 pub(crate) fn get_devices_request(
     py: Python<'_>,
     access_token: String,
 ) -> PyResult<Bound<'_, PyNatureRemoRequest>> {
-    normal::get_user_request(access_token).into_pyobject(py)
+    normal::get_devices_request(access_token).into_pyobject(py)
 }
 
 #[pyfunction]

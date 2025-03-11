@@ -1,15 +1,11 @@
-mod device_service;
-mod user_service;
-
-use crate::{http::HTTPMethod, service_provider as normal};
+use crate::http::HTTPMethod;
+use crate::service_provider::NatureRemoRequest;
 use http::header::{ACCEPT, AUTHORIZATION, USER_AGENT};
 use pyo3::prelude::*;
 use pythonize::pythonize;
 use serde::{self, Serialize};
 use std::borrow::Cow;
 use std::collections::HashMap;
-// Re-export each services
-pub(crate) use user_service::*;
 
 #[pyclass(name = "NatureRemoRequest", get_all)]
 #[derive(Debug)]
@@ -43,7 +39,7 @@ impl PyNatureRemoRequest {
     }
 }
 
-impl<'py, T: Serialize> IntoPyObject<'py> for normal::NatureRemoRequest<T>
+impl<'py, T: Serialize> IntoPyObject<'py> for NatureRemoRequest<T>
 where
     T: Serialize,
 {

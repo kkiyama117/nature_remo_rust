@@ -6,7 +6,4 @@ pub mod domain;
 /// client easily.
 pub mod http;
 
-#[cfg(feature = "pyo3")]
-mod python_extern;
-
 pub mod service_provider;

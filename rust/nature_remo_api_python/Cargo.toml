@@ -1,0 +1,42 @@
+[package]
+name = "nature_remo_api_python"
+version.workspace = true
+edition.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+nature_remo_api = { path = "../nature_remo_api", features = ["serde", "pyo3"] }
+chrono = { workspace = true, features = ["serde"] }
+eyre = { workspace = true }
+http = { workspace = true }
+log = { workspace = true }
+thiserror = { workspace = true }
+
+# Optional dependencies
+# serde
+serde = { workspace = true }
+serde_json = { workspace = true }
+http-serde = { version = "2.1" }
+# pyo3
+tokio = { workspace = true }
+pyo3 = { version = "0.24", features = [
+    "eyre",
+    "extension-module",
+    "chrono",
+    "serde",
+    "experimental-inspect",
+    "auto-initialize",
+    "nightly",
+] }
+# pythonize = { version = "0.23", optional = true }
+pythonize = { git = "https://github.com/kkiyama117/pythonize", branch = "update_0_24" }
+# pyo3-log  = { version = "0.12", optional = true }
+pyo3-log = { git = "https://github.com/gi0baro/pyo3-log", branch = "pyo3-024" }
+
+# pyo3-async-runtimes = { version = "0.23", optional = true, features = [
+pyo3-async-runtimes = { git = "https://github.com/kylebarron/pyo3-async-runtimes", branch = "kyle/bump-pyo3-0.24", features = [
+    #"attributes",
+    "tokio-runtime",
+] }

@@ -33,7 +33,8 @@ module-name = "nature_remo_api._rust_api"
 python-source = "python"
 #profile = "dev"
 features = ["pyo3/extension-module"]
-manifest-path = "rust/nature_remo_api/Cargo.toml"
+#manifest-path = "rust/nature_remo_api/Cargo.toml"
+manifest-path = "rust/nature_remo_api_python/Cargo.toml"
 
 [tool.pytest.ini_options]
 addopts = "-s"

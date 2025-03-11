@@ -1,8 +1,7 @@
 #![allow(dead_code)]
-#![cfg(feature = "pyo3")]
 
 // use http_client::{Error, HttpClient, Request, Response};
-use crate::http::RateLimit;
+use nature_remo_api::http::RateLimit;
 use pyo3::prelude::*;
 use std::fmt::Debug;
 

@@ -5,8 +5,6 @@ edition.workspace = true
 
 [lib]
 name       = "nature_remo_api"
-crate-type = ["cdylib", "rlib"]
-proc-macro = true
 
 [features]
 default = ["serde"]

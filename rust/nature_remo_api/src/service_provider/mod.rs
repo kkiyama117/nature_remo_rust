@@ -1,11 +1,14 @@
+mod python_binding;
 mod request_generator;
+pub use python_binding::PyNatureRemoRequest;
+pub use request_generator::*;
 
 use crate::http::HTTPMethod;
 use http::{
     HeaderMap,
     header::{ACCEPT, AUTHORIZATION, HeaderValue, USER_AGENT},
 };
-pub use request_generator::*;
+
 #[cfg(feature = "serde")]
 use serde::{self, Deserialize, Serialize};
 use std::borrow::Cow;

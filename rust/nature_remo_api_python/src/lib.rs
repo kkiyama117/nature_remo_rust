@@ -1,11 +1,8 @@
-#![cfg(all(feature = "serde", feature = "pyo3"))]
 //! This module is only loaded if features includes "pyo3"
 //! In this module, we can use attributes of pyo3, serde, and some dependencies
 //! set in Cargo.toml.
-mod client;
-#[cfg(feature = "serde")]
-mod service_provider;
 use log::LevelFilter;
+use nature_remo_api::*;
 use pyo3::{create_exception, prelude::*};
 use pyo3_log::{Caching, Logger};
 
@@ -16,30 +13,23 @@ create_exception!(
     pyo3::exceptions::PyException
 );
 
+mod client;
+mod service_provider;
+
 /// A Python module implemented in Rust.
 #[pymodule]
 #[pyo3(name = "_rust_api")]
-mod nature_remo_api {
+mod nature_remo_api_python {
     use super::*;
 
     #[pymodule_export]
-    use crate::python_extern::{NatureRemoError, client::PyNatureRemoAPI};
+    use crate::{NatureRemoError, client::PyNatureRemoAPI};
 
     #[pymodule]
     mod domain {
         use super::*;
         #[pymodule_export]
-        use crate::{
-            domain::inner::{
-                AirConRangeMode,
-                // ApplianceId,
-                ApplianceType,
-                // Country
-                // DeviceId,
-                // ImageId,
-                // SignalId,
-                TemperatureUnit,
-            },
+        use nature_remo_api::{
             domain::params::{
                 AirConParams, ApplianceParams, CreateApplianceRequest, CreateSignalParameters,
                 DetectApplianceRequest, ReorderAppliancesParams, ReorderSignalsParams,
@@ -50,7 +40,6 @@ mod nature_remo_api {
                 Signal, UserResponse,
             },
             // Some wrapper types are hidden because we use native classes of Python like `list`.
-            python_extern::service_provider::PyNatureRemoRequest,
         };
 
         #[pymodule_init]
@@ -68,9 +57,9 @@ mod nature_remo_api {
     mod request_generator {
         use super::*;
         #[pymodule_export]
-        use crate::python_extern::service_provider::{
-            PyNatureRemoRequest, get_user_request, post_user_request,
-        };
+        use crate::service_provider::user_service::{get_user_request, post_user_request};
+        #[pymodule_export]
+        use nature_remo_api::service_provider::PyNatureRemoRequest;
 
         #[pymodule_init]
         fn init(m: &Bound<'_, PyModule>) -> PyResult<()> {
