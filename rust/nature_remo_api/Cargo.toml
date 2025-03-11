@@ -1,17 +1,17 @@
 [package]
-name = "nature_remo_api"
+name              = "nature_remo_api"
 version.workspace = true
 edition.workspace = true
 
 [lib]
-name = "nature_remo_api"
+name       = "nature_remo_api"
 crate-type = ["cdylib", "rlib"]
 proc-macro = true
 
 [features]
 default = ["serde"]
-serde = ["dep:serde", "serde_json", "http-serde", "chrono/serde"]
-pyo3 = ["serde", "tokio", "dep:pyo3", "pyo3-log", "pyo3-async-runtimes", "pythonize"]
+serde   = ["dep:serde", "serde_json", "http-serde", "chrono/serde"]
+pyo3    = ["serde", "tokio", "dep:pyo3", "pyo3-log", "pyo3-async-runtimes", "pythonize"]
 #pyo3 = ["serde", "dep:pyo3", "pyo3-log", "pyo3-async-runtimes", "pythonize"]
 full = ["serde", "pyo3"]
 
@@ -19,20 +19,20 @@ full = ["serde", "pyo3"]
 clippy = ["full"]
 
 [dependencies]
-chrono = { workspace = true }
-eyre = { workspace = true }
-http = { workspace = true }
-log = { workspace = true }
+chrono    = { workspace = true }
+eyre      = { workspace = true }
+http      = { workspace = true }
+log       = { workspace = true }
 thiserror = { workspace = true }
 
 # Optional dependencies
 # serde
-serde = { workspace = true, optional = true, features = ["derive"] }
+serde      = { workspace = true, optional = true }
 serde_json = { workspace = true, optional = true }
 http-serde = { version = "2.1", optional = true }
 # pyo3
-tokio = { workspace = true, optional = true, features = ["default"] }
-pyo3 = { version = "0.23.5", optional = true, features = [
+tokio = { workspace = true, optional = true }
+pyo3 = { version = "0.24", optional = true, features = [
     "eyre",
     "extension-module",
     "chrono",
@@ -41,9 +41,13 @@ pyo3 = { version = "0.23.5", optional = true, features = [
     "auto-initialize",
     "nightly",
 ] }
-pythonize = { version = "0.23", optional = true }
-pyo3-log = { version = "0.12", optional = true }
-pyo3-async-runtimes = { version = "0.23", optional = true, features = [
+# pythonize = { version = "0.23", optional = true }
+pythonize = { git = "https://github.com/kkiyama117/pythonize", branch = "update_0_24", optional = true }
+# pyo3-log  = { version = "0.12", optional = true }
+pyo3-log = { git = "https://github.com/gi0baro/pyo3-log", branch = "pyo3-024", optional = true }
+
+# pyo3-async-runtimes = { version = "0.23", optional = true, features = [
+pyo3-async-runtimes = { git = "https://github.com/kylebarron/pyo3-async-runtimes", branch = "kyle/bump-pyo3-0.24", optional = true, features = [
     #"attributes",
     "tokio-runtime",
 ] }
